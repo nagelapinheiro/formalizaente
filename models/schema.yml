@@ -1,0 +1,252 @@
+version: 2
+
+models:
+  - name: stg_listas_normativas
+    description: Lista normativa ingerida da Bronze, tipada e normalizada sem classificação de esfera.
+    columns:
+      - name: source_row_number
+        data_tests:
+          - not_null
+      - name: lista
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [REMUME, RESME, RENAME]
+              config:
+                severity: warn
+
+  - name: stg_solicitacoes
+    description: Solicitações brutas tipadas; defeitos ainda estão presentes e identificáveis.
+    columns:
+      - name: source_row_number
+        data_tests:
+          - not_null
+          - unique
+
+  - name: int_listas_validas
+    description: Itens normativos liberados para o cruzamento após validação estrutural.
+    columns:
+      - name: lista
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [REMUME, RESME, RENAME]
+      - name: item_normalizado
+        data_tests:
+          - not_null
+
+  - name: quarantine_listas_normativas
+    description: Registros normativos inválidos preservados com motivo de rejeição.
+    columns:
+      - name: motivo_invalidade
+        data_tests:
+          - not_null
+
+  - name: quarantine_solicitacoes
+    description: Solicitações inválidas ou duplicadas preservadas para auditoria.
+    columns:
+      - name: motivo_invalidade
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - ID_AUSENTE
+                  - DATA_INVALIDA_OU_AUSENTE
+                  - ITEM_AUSENTE
+                  - AREA_INVALIDA
+                  - RESPONSAVEL_AUSENTE
+                  - ID_DUPLICADO
+
+  - name: dim_esfera
+    description: Domínio ordenado das esferas possíveis de resolução.
+    columns:
+      - name: esfera_resolucao
+        data_tests:
+          - not_null
+          - unique
+          - accepted_values:
+              arguments:
+                values: [MUNICIPIO, ESTADO, UNIAO, NAO_ENCONTRADO]
+
+  - name: dim_categoria
+    description: Categorias presentes no conjunto analítico válido.
+    columns:
+      - name: categoria
+        data_tests:
+          - not_null
+          - unique
+
+  - name: fct_solicitacoes
+    description: >-
+      Tabela larga principal. Cada linha representa uma solicitação sintética válida,
+      já classificada segundo a prioridade Município, Estado e União.
+    columns:
+      - name: solicitacao_id
+        description: Identificador sintético único da solicitação.
+        data_tests:
+          - not_null
+          - unique
+      - name: data_solicitacao
+        data_tests:
+          - not_null
+      - name: mes_referencia
+        data_tests:
+          - not_null
+      - name: item_normalizado
+        data_tests:
+          - not_null
+      - name: categoria
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_categoria')
+                field: categoria
+      - name: area_origem
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [NAT-JUS, VARA_CIVEL, DEFENSORIA]
+      - name: esfera_resolucao
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [MUNICIPIO, ESTADO, UNIAO, NAO_ENCONTRADO]
+          - relationships:
+              arguments:
+                to: ref('dim_esfera')
+                field: esfera_resolucao
+      - name: indicador_atendida
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+      - name: indicador_ambiguidade
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+
+  - name: agg_cobertura_geral
+    description: Métricas derivadas gerais, prontas para a consulta final sem regra de negócio.
+    columns:
+      - name: indicador
+        data_tests:
+          - not_null
+          - unique
+          - accepted_values:
+              arguments:
+                values: [GERAL]
+      - name: taxa_cobertura_pct
+        data_tests:
+          - not_null
+      - name: taxa_ambiguidade_pct
+        data_tests:
+          - not_null
+
+  - name: agg_cobertura_mensal
+    description: Taxa de cobertura por mês.
+    columns:
+      - name: mes_referencia
+        data_tests:
+          - not_null
+          - unique
+      - name: taxa_cobertura_pct
+        data_tests:
+          - not_null
+
+  - name: agg_cobertura_categoria
+    description: Taxa de cobertura por categoria.
+    columns:
+      - name: categoria
+        data_tests:
+          - not_null
+          - unique
+      - name: taxa_cobertura_pct
+        data_tests:
+          - not_null
+
+  - name: agg_cobertura_area
+    description: Taxa de cobertura por área de origem.
+    columns:
+      - name: area_origem
+        data_tests:
+          - not_null
+          - unique
+      - name: taxa_cobertura_pct
+        data_tests:
+          - not_null
+
+  - name: agg_distribuicao_esfera
+    description: Distribuição das solicitações pela esfera escolhida pela regra de prioridade.
+    columns:
+      - name: esfera_resolucao
+        data_tests:
+          - not_null
+          - unique
+          - relationships:
+              arguments:
+                to: ref('dim_esfera')
+                field: esfera_resolucao
+
+
+  - name: stg_areas_referencia
+    description: Cadastro de áreas vindo da fonte XLSX, tipado e normalizado.
+    columns:
+      - name: source_row_number
+        data_tests:
+          - not_null
+          - unique
+      - name: ativa
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [SIM, NAO]
+              config:
+                severity: warn
+
+  - name: int_areas_validas
+    description: Áreas ativas e estruturalmente válidas usadas na validação das solicitações.
+    columns:
+      - name: area_origem
+        data_tests:
+          - not_null
+          - unique
+
+  - name: quarantine_areas_referencia
+    description: Registros inválidos da planilha de áreas preservados com motivo.
+    columns:
+      - name: motivo_invalidade
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [AREA_AUSENTE, STATUS_ATIVA_INVALIDO, AREA_DUPLICADA]
+
+  - name: agg_resposta_gerencial
+    description: >-
+      Mart final orientado à pergunta. Grão: uma linha por recorte analítico, incluindo
+      visão geral, esfera, período, categoria e área.
+    columns:
+      - name: chave_recorte
+        data_tests:
+          - not_null
+          - unique
+      - name: tipo_recorte
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [GERAL, ESFERA, PERIODO, CATEGORIA, AREA]
+      - name: recorte
+        data_tests:
+          - not_null
+      - name: total_solicitacoes
+        data_tests:
+          - not_null

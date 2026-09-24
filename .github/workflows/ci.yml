@@ -1,0 +1,43 @@
+name: validate-data-pipeline
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Rebuild Bronze
+        run: python -m src.pipeline
+
+      - name: Build and test dbt lineage
+        run: dbt build
+
+      - name: Run Python tests and lint
+        run: |
+          python -m pytest
+          ruff check src tests_python
+
+      - name: Generate dbt documentation
+        run: dbt docs generate
+
+      - name: Verify answer and time travel
+        run: |
+          python -m src.answer
+          python -m src.time_travel
+

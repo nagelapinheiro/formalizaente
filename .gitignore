@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+logs/
+target/
+dbt_packages/
+warehouse/*.duckdb
+warehouse/*.duckdb.wal
+.DS_Store
+.ipynb_checkpoints/
+
+# As pastas data/raw, data/bronze, data/silver e data/gold são parte da entrega.
+# data/raw contém as fontes sintéticas.
+# data/bronze mantém o Delta Lake e o histórico obrigatório.
+# data/silver e data/gold recebem Parquet gerado pelo dbt.

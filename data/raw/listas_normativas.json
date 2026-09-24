@@ -1,0 +1,46 @@
+{
+  "dataset": "AMOSTRA_SINTETICA_LISTAS_NORMATIVAS_FORMALIZAENTE",
+  "aviso": "Dados sintéticos para fins acadêmicos. Não substituir consulta às publicações oficiais.",
+  "itens": [
+    {"lista":"REMUME","codigo":"MUN-001","item":"Dipirona sódica","categoria":"ANALGÉSICO","fonte_declarada":"Amostra sintética inspirada no domínio REMUME"},
+    {"lista":"REMUME","codigo":"MUN-002","item":"Paracetamol","categoria":"ANALGÉSICO","fonte_declarada":"Amostra sintética inspirada no domínio REMUME"},
+    {"lista":"REMUME","codigo":"MUN-003","item":"Amoxicilina","categoria":"ANTIBIÓTICO","fonte_declarada":"Amostra sintética inspirada no domínio REMUME"},
+    {"lista":"REMUME","codigo":"MUN-004","item":"Azitromicina","categoria":"ANTIBIÓTICO","fonte_declarada":"Amostra sintética inspirada no domínio REMUME"},
+    {"lista":"REMUME","codigo":"MUN-005","item":"Losartana potássica","categoria":"ANTI-HIPERTENSIVO","fonte_declarada":"Amostra sintética inspirada no domínio REMUME"},
+    {"lista":"REMUME","codigo":"MUN-006","item":"Metformina","categoria":"ANTIDIABÉTICO","fonte_declarada":"Amostra sintética inspirada no domínio REMUME"},
+    {"lista":"REMUME","codigo":"MUN-007","item":"Omeprazol","categoria":"GASTROPROTETOR","fonte_declarada":"Amostra sintética inspirada no domínio REMUME"},
+    {"lista":"REMUME","codigo":"MUN-008","item":"Salbutamol","categoria":"BRONCODILATADOR","fonte_declarada":"Amostra sintética inspirada no domínio REMUME"},
+    {"lista":"REMUME","codigo":"MUN-009","item":"Ibuprofeno","categoria":"ANTI-INFLAMATÓRIO","fonte_declarada":"Amostra sintética inspirada no domínio REMUME"},
+    {"lista":"REMUME","codigo":"MUN-010","item":"Prednisona","categoria":"CORTICOIDE","fonte_declarada":"Amostra sintética inspirada no domínio REMUME"},
+    {"lista":"REMUME","codigo":"MUN-011","item":"Sinvastatina","categoria":"HIPOLIPEMIANTE","fonte_declarada":"Amostra sintética inspirada no domínio REMUME"},
+    {"lista":"REMUME","codigo":"MUN-012","item":"Insulina humana NPH","categoria":"ANTIDIABÉTICO","fonte_declarada":"Amostra sintética inspirada no domínio REMUME"},
+
+    {"lista":"RESME","codigo":"EST-001","item":"Paracetamol","categoria":"ANALGÉSICO","fonte_declarada":"Amostra sintética inspirada no domínio RESME"},
+    {"lista":"RESME","codigo":"EST-002","item":"Clopidogrel","categoria":"ANTICOAGULANTE","fonte_declarada":"Amostra sintética inspirada no domínio RESME"},
+    {"lista":"RESME","codigo":"EST-003","item":"Enoxaparina sódica","categoria":"ANTICOAGULANTE","fonte_declarada":"Amostra sintética inspirada no domínio RESME"},
+    {"lista":"RESME","codigo":"EST-004","item":"Risperidona","categoria":"ANTIPSICÓTICO","fonte_declarada":"Amostra sintética inspirada no domínio RESME"},
+    {"lista":"RESME","codigo":"EST-005","item":"Olanzapina","categoria":"ANTIPSICÓTICO","fonte_declarada":"Amostra sintética inspirada no domínio RESME"},
+    {"lista":"RESME","codigo":"EST-006","item":"Carbamazepina","categoria":"ANTICONVULSIVANTE","fonte_declarada":"Amostra sintética inspirada no domínio RESME"},
+    {"lista":"RESME","codigo":"EST-007","item":"Valproato de sódio","categoria":"ANTICONVULSIVANTE","fonte_declarada":"Amostra sintética inspirada no domínio RESME"},
+    {"lista":"RESME","codigo":"EST-008","item":"Levofloxacino","categoria":"ANTIBIÓTICO","fonte_declarada":"Amostra sintética inspirada no domínio RESME"},
+    {"lista":"RESME","codigo":"EST-009","item":"Insulina humana NPH","categoria":"ANTIDIABÉTICO","fonte_declarada":"Amostra sintética inspirada no domínio RESME"},
+    {"lista":"RESME","codigo":"EST-010","item":"Adalimumabe","categoria":"IMUNOBIOLÓGICO","fonte_declarada":"Amostra sintética inspirada no domínio RESME"},
+    {"lista":"RESME","codigo":"EST-011","item":"Infliximabe","categoria":"IMUNOBIOLÓGICO","fonte_declarada":"Amostra sintética inspirada no domínio RESME"},
+    {"lista":"RESME","codigo":"EST-012","item":"Formoterol","categoria":"BRONCODILATADOR","fonte_declarada":"Amostra sintética inspirada no domínio RESME"},
+
+    {"lista":"RENAME","codigo":"FED-001","item":"DIPIRONA SÓDICA ","categoria":"ANALGÉSICO","fonte_declarada":"Amostra sintética inspirada no domínio RENAME"},
+    {"lista":"RENAME","codigo":"FED-002","item":"Paracetamol","categoria":"ANALGÉSICO","fonte_declarada":"Amostra sintética inspirada no domínio RENAME"},
+    {"lista":"RENAME","codigo":"FED-003","item":"Clopidogrel","categoria":"ANTICOAGULANTE","fonte_declarada":"Amostra sintética inspirada no domínio RENAME"},
+    {"lista":"RENAME","codigo":"FED-004","item":"Levotiroxina sódica","categoria":"HORMÔNIO","fonte_declarada":"Amostra sintética inspirada no domínio RENAME"},
+    {"lista":"RENAME","codigo":"FED-005","item":"Sulfato ferroso","categoria":"SUPLEMENTO","fonte_declarada":"Amostra sintética inspirada no domínio RENAME"},
+    {"lista":"RENAME","codigo":"FED-006","item":"Ácido fólico","categoria":"SUPLEMENTO","fonte_declarada":"Amostra sintética inspirada no domínio RENAME"},
+    {"lista":"RENAME","codigo":"FED-007","item":"Benzilpenicilina benzatina","categoria":"ANTIBIÓTICO","fonte_declarada":"Amostra sintética inspirada no domínio RENAME"},
+    {"lista":"RENAME","codigo":"FED-008","item":"Tenofovir","categoria":"ANTIRRETROVIRAL","fonte_declarada":"Amostra sintética inspirada no domínio RENAME"},
+    {"lista":"RENAME","codigo":"FED-009","item":"Dolutegravir","categoria":"ANTIRRETROVIRAL","fonte_declarada":"Amostra sintética inspirada no domínio RENAME"},
+    {"lista":"RENAME","codigo":"FED-010","item":"Trastuzumabe","categoria":"ANTINEOPLÁSICO","fonte_declarada":"Amostra sintética inspirada no domínio RENAME"},
+    {"lista":"RENAME","codigo":"FED-011","item":"Rituximabe","categoria":"ANTINEOPLÁSICO","fonte_declarada":"Amostra sintética inspirada no domínio RENAME"},
+    {"lista":"RENAME","codigo":"FED-012","item":"Morfina","categoria":"OPIOIDE","fonte_declarada":"Amostra sintética inspirada no domínio RENAME"},
+    {"lista":"","codigo":"DEF-001","item":"Registro deliberadamente sem lista","categoria":"OUTRO","fonte_declarada":"Defeito intencional para teste de qualidade"}
+  ]
+}
+

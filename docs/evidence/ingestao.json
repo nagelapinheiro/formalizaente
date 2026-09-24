@@ -1,0 +1,30 @@
+{
+  "executado_em_utc": "2026-09-24T22:23:02.361829+00:00",
+  "projeto": "FormalizaEnte_Com_Dashboard",
+  "fontes": [
+    "solicitacoes.csv",
+    "listas_normativas.json",
+    "areas_referencia.xlsx"
+  ],
+  "camadas_storage": [
+    "data/raw",
+    "data/bronze",
+    "data/silver",
+    "data/gold"
+  ],
+  "solicitacoes": {
+    "versao_atual": 1,
+    "total_versoes": 2,
+    "total_registros_atual": 70
+  },
+  "listas_normativas": {
+    "versao_atual": 0,
+    "total_versoes": 1,
+    "total_registros_atual": 37
+  },
+  "areas_referencia": {
+    "versao_atual": 0,
+    "total_versoes": 1,
+    "total_registros_atual": 6
+  }
+}

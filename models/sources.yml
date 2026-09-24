@@ -1,0 +1,37 @@
+version: 2
+
+sources:
+  - name: bronze
+    description: >-
+      Estado atual das tabelas Bronze preservadas em Delta Lake e expostas pelo pipeline
+      como views somente de leitura no DuckDB. Os source nodes deixam a origem Bronze
+      explícita na DAG do dbt sem mover regra de negócio para a ingestão.
+    schema: bronze
+    tables:
+      - name: solicitacoes
+        description: Solicitações sintéticas preservadas como recebidas do CSV.
+        columns:
+          - name: source_row_number
+            data_tests:
+              - not_null
+          - name: _source_file
+            data_tests:
+              - not_null
+      - name: listas_normativas
+        description: Itens normativos sintéticos preservados como recebidos do JSON.
+        columns:
+          - name: source_row_number
+            data_tests:
+              - not_null
+          - name: _source_file
+            data_tests:
+              - not_null
+      - name: areas_referencia
+        description: Cadastro sintético de áreas preservado como recebido da planilha XLSX.
+        columns:
+          - name: source_row_number
+            data_tests:
+              - not_null
+          - name: _source_file
+            data_tests:
+              - not_null

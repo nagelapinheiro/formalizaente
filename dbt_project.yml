@@ -1,0 +1,31 @@
+name: formalizaente_analytics
+version: "1.0.0"
+config-version: 2
+
+profile: formalizaente_analytics
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages", "logs"]
+
+models:
+  formalizaente_analytics:
+    staging:
+      +materialized: external
+      +format: parquet
+      +schema: silver
+    intermediate:
+      +materialized: external
+      +format: parquet
+      +schema: silver
+    marts:
+      +materialized: external
+      +format: parquet
+      +schema: gold
+
+flags:
+  use_colors: true
+  send_anonymous_usage_stats: false

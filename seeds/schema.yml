@@ -1,0 +1,26 @@
+version: 2
+
+seeds:
+  - name: ref_listas
+    description: >-
+      Regra versionada que relaciona cada lista à esfera de resolução e à prioridade.
+      Alterar a hierarquia exige alterar este arquivo e passar novamente pelos testes.
+    columns:
+      - name: lista
+        data_tests:
+          - not_null
+          - unique
+          - accepted_values:
+              arguments:
+                values: [REMUME, RESME, RENAME]
+      - name: esfera_resolucao
+        data_tests:
+          - not_null
+          - unique
+          - accepted_values:
+              arguments:
+                values: [MUNICIPIO, ESTADO, UNIAO]
+      - name: prioridade
+        data_tests:
+          - not_null
+          - unique

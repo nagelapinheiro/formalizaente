@@ -1,0 +1,4 @@
+# Dependências adicionais apenas para a interface do dashboard.
+# Instale depois do requirements.txt principal.
+streamlit>=1.39,<2
+plotly==5.24.1

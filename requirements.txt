@@ -1,0 +1,11 @@
+dbt-core==1.12.3
+dbt-duckdb==1.9.6
+deltalake==1.1.4
+pandas==2.2.3
+pyarrow==21.0.0
+pytest==8.4.2
+ruff==0.12.11
+
+openpyxl==3.1.5
+
+plotly==5.24.1
